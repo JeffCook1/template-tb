@@ -21,7 +21,7 @@ La courbe d'apprentissage n'est pas très raide et la valeur ajoutée est grande
 
 \begin{equation} \label{eq:1}
     \begin{split}
-        L(x,y) & = \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)     \\
+        L(x,y) & = \exp\left( - i\frac{{2\pi }}{\lambda }\left( {n\Delta \varphi (x,y) + \Delta {\varphi _0} - \Delta \varphi (x,y)} \right)\right)      \\
                & = {\exp\left({i\frac{{2\pi }}{\lambda }\Delta {\varphi _0}}\right)}{\exp\left({ - i\frac{{2\pi }}{{\lambda f}}({x^2} + {y^2})}\right)}
     \end{split}
 \end{equation}
@@ -148,7 +148,7 @@ Vous pouvez insérer des sous-figures, par exemple ici 4 figures côte à côte 
         \end{tikzpicture}
         \caption{Canard 2}
     \end{subfigure}
-
+    
     \begin{subfigure}{0.45\textwidth}
         \centering
         \begin{tikzpicture}
@@ -399,7 +399,7 @@ Voici un autre exemple d'un diagramme de jonction semi-conducteur.
     % variables for pn-junction diagram:
     % all parameters are in tikz scale
     % p-side of the junction is here on the right
-
+    
     \def\V{1.5}   % junction polarisation (0=flat band)
     \def\EG{3}    % band gap of semiconductor
     \def\EF{1.5}  % vertical Fermi level position
@@ -408,36 +408,36 @@ Voici un autre exemple d'un diagramme de jonction semi-conducteur.
     \def\DZCE{4}  % start position on the left for space charge region (SCR)
     \def\LZCE{2}  % SCR width
     \def\PN{10}   % total lentgh of the junction
-
+    
     % calculations
     \pgfmathsetmacro\EC{\EG+\V} % conduction band heigth (without polarisation)
     \pgfmathsetmacro\FZCE{\DZCE+\LZCE} % SCR end position
-
+    
     % valence and conduction band drawing:
     \draw (0,0) node [left]{$E_V$} -- (\DZCE,0)
     to[out=0, in=180, looseness=0.75] (\FZCE,\V) -- (\PN,\V); % EV
     \draw (0,\EG) node [left] {$E_C$} -- (\DZCE,\EG)
     to[out=0, in=180, looseness=0.75] (\FZCE,\EC) -- (\PN,\EC); % EC
-
+    
     % fermi level drawing (if needed):
     %	\draw [dashed](0,\EF) -- ({\PN-0.5},\EF) node [right]{$E_F$}; % EF
-
+    
     % quasi fermi levels drawing (if needed) :
     \draw [dashed] (0,\EFn)  -- (\PN,\EFn)
     node [right] {$E_{Fn}$}; % EFn for electron
     \draw [dashed] (0,\EFp)  -- ({\PN},\EFp)
     node [right] {$E_{Fp}$}; % EFp for holes
-
+    
     % electric field in SCR drawing :
     \draw [->] (\DZCE, {\V+\EG+1}) --
     node [above] {$\vec{E}_{ZCE}$} (\FZCE, {\V+\EG+1}) ; % E vector
-
+    
     % excess carriers
     \foreach \x in {1,2,...,7}
     \draw ({\FZCE+1+\x/3},{\EC+0.2}) node {$\bullet$}; % p side : electrons
     \foreach \x in {1,2,...,7}
     \draw ({1+\x/3},{-0.2}) node {$\circ$}; % n side : holes
-
+    
     % photon injection and carrier generation
     % p side : carrier generation:
     \draw [->, loosely dashed] ({\FZCE+3}, \V) --
@@ -448,7 +448,7 @@ Voici un autre exemple d'un diagramme de jonction semi-conducteur.
     % photon wave injection in the bandgap on p-side :
     \draw [decorate, decoration={snake}, ->] ({\PN+1},{\EC+1}) --
     node [below,sloped]{$h\nu$} ({\FZCE+3}, \EG);
-
+    
     % excess carriers diffusion, with diffusion length :
     % electrons on p side :
     \draw [->] ({\FZCE+1},{\EC+0.2}) -- node [above] {$L_{Dn}$}
@@ -470,20 +470,20 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
 
 \begin{circuitikz}
     %	\draw [help lines] (-1,-2) grid (12,5);
-
+    
     % electrical equivalent circuit
     \draw (0,3) to[V, v_=$U_R$] (0,0);
     \draw (0,3) to[R, i>^=$I_A$, l=$R_A$] (3,3);
     \draw (3,3) to[L, l=$L_A$] (4,3);
-
+    
     \draw (4,3) -- (5,3);
     \draw (5,3) to[V, v_=$U_i$] (5,0);
     \draw (0,0) -- (5,0);
-
+    
     % drive
     \draw[fill=black] (4.85,0.85) rectangle (5.15,2.15);
     \draw[fill=white] (5,1.5) ellipse (.45 and .45);
-
+    
     % transmission gear one
     \draw[fill=black!50] (6.7,1.49)
     ellipse (.08 and 0.33);
@@ -493,13 +493,13 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
     ellipse (.08 and 0.33);
     \draw (6.5,1.82) -- (6.7,1.82);
     \draw (6.5,1.16) -- (6.7,1.16);
-
+    
     % shaft drive -> transmission
     \draw[fill=black] (5.45,1.45) rectangle (6.5,1.55);
-
+    
     % momentum arrow of drive -> transmission
     \draw[line width=0.7pt,<-] (5.8,1) arc (-30:30:1);
-
+    
     % transmission gear two
     \draw[fill=black!50] (6.7,0.40)
     ellipse (.13 and 0.67);
@@ -509,7 +509,7 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
     ellipse (.13 and 0.67);
     \draw (6.5,1.07) -- (6.7,1.07);
     \draw (6.5,-0.27) -- (6.7,-0.27);
-
+    
     % transmission gear three
     \draw[fill=black!50] (6.85,1.14)
     ellipse (.08 and 0.3);
@@ -519,10 +519,10 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
     ellipse (.08 and 0.3);
     \draw (6.65,1.44) -- (6.86,1.44);
     \draw (6.65,0.84) -- (6.86,0.84);
-
+    
     % transmission shaft from gear two to moment of inertia
     \draw[fill=black] (6.84,0.38) rectangle (7.8,0.48);
-
+    
     % moment of inertia
     \draw[fill=white] (8.5,0.42)
     ellipse (.15 and 0.4);
@@ -531,38 +531,38 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
     \draw (7.8,0.42) ellipse (.15 and 0.4);
     \draw (7.8,0.82) -- (8.5,0.82);
     \draw (7.8,0.02) -- (8.5,0.02);
-
+    
     % momentum arrow between transmission and moment of inertia
     \draw[line width=0.7pt,<-] (7.2,-0.07) arc (-30:30:1);
-
+    
     % shaft right from moment of inertia
     \draw[fill=black] (8.65,0.38) rectangle (10.9,0.48);
-
+    
     % brake shoe
     \draw[fill=black] (9.55,{0.53+0.00})
     -- +(-0.2,0.3) -- +(0.5,0.3) -- +(0.3,0.0);
     \draw[fill=black] (9.55,{0.33-0.00})
     -- +(-0.2,-0.3) -- +(0.5,-0.3) -- +(0.3,0.0);
-
+    
     % momentum arrow (left hand side of brake shoe)
     \draw[line width=0.7pt,->] (9.05,-0.07) arc (-30:30:1);
-
+    
     % spring
     \draw [domain=0:{-4.5*pi}, variable=\t, samples=200,
         line width=1pt]
     plot( {10.52+0.4 + 0.15*(\t*0.1)*cos(\t r)},
     {0.40 + 0.15*(\t*0.3)*sin(\t r)});
-
+    
     % momentum arrow (left hand side of spring)
     \draw[line width=0.7pt,->] (10.4,-0.07) arc (-30:30:1);
-
+    
     % spring wall mount
     \draw[fill=black]
     (10.9,{1.03-0.2}) rectangle (10.95,{1.03+0.2});
     \foreach \x in {0,...,5}
     \draw[line width=0.8pt]
     ({10.55+0.4},{1.03-0.18+\x*0.07}) -- +(0.1,0.05);
-
+    
     % descriptions inside graphic
     \draw (5.85,2.2) node {$\omega_A, M_A$};
     \draw (7.29,1.11) node {$\omega_K$};
@@ -570,7 +570,7 @@ Voici un exemple d'un modèle d'un papillon des gaz utilisé dans un moteur à c
     \draw (9.05,1.15) node {$M_R$};
     \draw (10.4,1.15) node {$M_F$};
     \draw (6.6,-0.5) node {$v$};
-
+    
     % descriptions of subsystems under graphic
     \draw [decorate,decoration={brace,amplitude=10pt},
         xshift=0pt, yshift=0pt]
